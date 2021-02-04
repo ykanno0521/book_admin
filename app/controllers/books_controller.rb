@@ -6,11 +6,12 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :destroy]
 
   def show
-    @book = Book.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    # @book = Book.find(params[:id])
+    # respond_to do |format|
+    #   format.html
+    #   format.json
+    # end
+    render :show #renderを省略しても暗黙的に解釈されるので、描画される
   end
 
   def destroy
