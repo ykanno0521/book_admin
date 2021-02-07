@@ -7,11 +7,17 @@ class BooksController < ApplicationController
 
   def show
     # @book = Book.find(params[:id])
-    # respond_to do |format|
-    #   format.html
-    #   format.json
-    # end
-    render :show #renderを省略しても暗黙的に解釈されるので、描画される
+    #* コンテンツのタイプによってだし分ける
+    respond_to do |format|
+      format.html do |html|
+        html.mobile { redirect_to profile_path }
+      end
+      format.json { render json: @book}
+    end
+
+    #* renderを使用した場合
+    #renderを省略しても暗黙的に解釈されるので、描画される
+    # render :show
   end
 
   def destroy
